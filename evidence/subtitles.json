@@ -1,0 +1,35 @@
+{
+  "status": "completed",
+  "source_filename": "jfk.flac",
+  "model": "tiny",
+  "device": "cpu",
+  "compute_type": "int8",
+  "language_hint": "en",
+  "audio_duration_seconds": 11.0,
+  "speech_intervals": 4,
+  "subtitle_count": 4,
+  "elapsed_seconds": 5.585,
+  "completed_at_utc": "2026-11-19T10:28:40.310973+00:00",
+  "captions": [
+    {
+      "start": 0.2,
+      "end": 2.2,
+      "text": "And so my fellow Americans."
+    },
+    {
+      "start": 3.1,
+      "end": 4.6,
+      "text": "As NOT!"
+    },
+    {
+      "start": 5.2,
+      "end": 7.2,
+      "text": "What your country can do for you?"
+    },
+    {
+      "start": 8.0,
+      "end": 10.6,
+      "text": "Ask what you can do for your country."
+    }
+  ]
+}
