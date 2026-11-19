@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-ai-subtitle-pipeline"
+version = "0.1.0"
+description = "Local-first VAD and Whisper transcription pipeline for subtitle generation"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "GAODAYIHAO01"}]
+dependencies = []
+
+[project.optional-dependencies]
+asr = [
+  "faster-whisper>=1.1,<2",
+  "silero-vad>=5.1,<7",
+  "torch>=2.3,<3",
+]
+
+[project.scripts]
+subtitle-pipeline = "subtitle_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
