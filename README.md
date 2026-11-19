@@ -100,6 +100,24 @@ python -m compileall -q src
 
 End-to-end ASR performance and transcript correctness require a separate manual run using a media sample that can legally be processed. Refer to [ROADMAP](docs/ROADMAP.md) for the exact outstanding verification tasks.
 
+## Reproducible real-audio verification
+
+CI workflow: [.github/workflows/real-audio-e2e.yml](.github/workflows/real-audio-e2e.yml). The test processes the [Whisper JFK sample](https://github.com/openai/whisper/blob/main/tests/jfk.flac) using Silero VAD and a tiny faster-whisper model.
+
+**Verification must be evidence-based.** Committing the workflow does not prove a successful inference run. Check the [Actions page](https://github.com/GAODAYIHAO01/local-ai-subtitle-pipelin/actions/workflows/real-audio-e2e.yml). On success, CI uploads a downloadable artifact containing:
+
+- verification.log: timestamp, model, CPU runtime, real-time factor, source hash and transcribed captions
+- subtitles.srt and subtitles.json: the actual model output
+- verification.md: a human-readable evidence summary
+
+On a successful push-triggered run with write permission, the CI also commits these files in the evidence/ directory. If that folder is absent, a successful run has not yet been established. A failed run is not evidence of success.
+
+This is a short real-audio smoke test, **not** the full 5-10-minute Milestone 1 acceptance test.
+
+Reproduce after installing FFmpeg and ASR dependencies:
+
+    python -m pip install -e ".[asr]"
+    python scripts/verify_e2e.py --input path/to/authorized-speech.flac --model tiny
 ## Intended use of Devin
 
 1. Review current design and identify timestamp, codec and language-handling edge cases.
